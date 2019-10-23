@@ -9,7 +9,7 @@ import { HealthProfessionalComponent } from './user/health-professional/health-p
 import { PatientComponent } from './user/patient/patient.component';
 import { LocationComponent } from './location/location.component';
 import { LocalComponent } from './location/local/local.component';
-import { OfficeComponent } from './office/office.component';
+import { OfficeComponent } from './location/office/office.component';
 import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
