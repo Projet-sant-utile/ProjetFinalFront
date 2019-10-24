@@ -19,8 +19,11 @@ import { CreateCityHallComponent } from './user/city-hall/create-city-hall/creat
 import { ListCityHallComponent } from './user/city-hall/list-city-hall/list-city-hall.component';
 import { UpdateCityHallComponent } from './user/city-hall/update-city-hall/update-city-hall.component';
 import { ListHealthProfessionalComponent } from './user/health-professional/list-health-professional/list-health-professional.component';
+// tslint:disable-next-line:max-line-length
 import { UpdateHealthProfessionalComponent } from './user/health-professional/update-health-professional/update-health-professional.component';
+// tslint:disable-next-line:max-line-length
 import { CreateHealthProfessionalComponent } from './user/health-professional/create-health-professional/create-health-professional.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,8 @@ import { CreateHealthProfessionalComponent } from './user/health-professional/cr
     UpdateHealthProfessionalComponent,
     CreateHealthProfessionalComponent,
     CreateCityHallComponent,
-    CreatePatientComponent
+    CreatePatientComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
