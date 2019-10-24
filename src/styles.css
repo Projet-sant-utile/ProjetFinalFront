@@ -1,2 +1,9 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
+
+
+  /* Page content */
+  .main {
+    margin-left: 210px; /* Same as the width of the sidenav */
+    margin-top: 116px;
+  }
