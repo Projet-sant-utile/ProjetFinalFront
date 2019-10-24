@@ -1,3 +1,4 @@
+import { HealthProfessionalComponent } from './user/health-professional/health-professional.component';
 import { UserComponent } from './user/user.component';
 import { PatientComponent } from './user/patient/patient.component';
 import { NgModule } from '@angular/core';
@@ -11,6 +12,9 @@ const routes: Routes = [
   },
   {
     path: 'user', component: UserComponent
+  },
+  {
+    path: 'medecins', component: HealthProfessionalComponent
   }
 
 ];
