@@ -12,6 +12,15 @@ import { LocationComponent } from './location/location.component';
 import { LocalComponent } from './location/local/local.component';
 import { OfficeComponent } from './location/office/office.component';
 import { MenuComponent } from './menu/menu.component';
+import { UpdatePatientComponent } from './user/patient/update-patient/update-patient.component';
+import { ListPatientComponent } from './user/patient/list-patient/list-patient.component';
+import { CreatePatientComponent } from './user/patient/create-patient/create-patient.component';
+import { CreateCityHallComponent } from './user/city-hall/create-city-hall/create-city-hall.component';
+import { ListCityHallComponent } from './user/city-hall/list-city-hall/list-city-hall.component';
+import { UpdateCityHallComponent } from './user/city-hall/update-city-hall/update-city-hall.component';
+import { ListHealthProfessionalComponent } from './user/health-professional/list-health-professional/list-health-professional.component';
+import { UpdateHealthProfessionalComponent } from './user/health-professional/update-health-professional/update-health-professional.component';
+import { CreateHealthProfessionalComponent } from './user/health-professional/create-health-professional/create-health-professional.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +32,16 @@ import { MenuComponent } from './menu/menu.component';
     LocationComponent,
     LocalComponent,
     OfficeComponent,
-    MenuComponent
+    MenuComponent,
+    UpdatePatientComponent,
+    ListPatientComponent,
+    ListCityHallComponent,
+    UpdateCityHallComponent,
+    ListHealthProfessionalComponent,
+    UpdateHealthProfessionalComponent,
+    CreateHealthProfessionalComponent,
+    CreateCityHallComponent,
+    CreatePatientComponent
   ],
   imports: [
     BrowserModule,
