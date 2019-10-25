@@ -6,7 +6,12 @@
     <h1>
         Recherche d'un spécialiste
     </h1>
-
+    <form class="form-inline my-2 my-lg-0 d-flex justify-content-center">
+        <input class="form-control mr-sm-2" type="search" [(ngModel)]="searchAddress" name="something" placeholder="Entrer votre adresse" aria-label="Search">
+        <!-- <button class="btn btn-light my-2 my-sm-0" type="submit" (click)="myPrint()">Entrer</button> -->
+        <button class="btn btn-light my-2 my-sm-0" type="button" (click)="myPrint()">Entrer</button>
+    <br>
+    </form>
     <div id="frugalmap">
     </div>
 </div>

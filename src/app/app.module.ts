@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
+import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
@@ -24,6 +24,7 @@ import { UpdateHealthProfessionalComponent } from './user/health-professional/up
 // tslint:disable-next-line:max-line-length
 import { CreateHealthProfessionalComponent } from './user/health-professional/create-health-professional/create-health-professional.component';
 import { MapComponent } from './map/map.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,9 @@ import { MapComponent } from './map/map.component';
   imports: [
     BrowserModule,
     NgbModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
