@@ -22,12 +22,18 @@ export class MapComponent implements OnInit {
     iconAnchor: [12, 41], // point of the icon which will correspond to marker's location
     popupAnchor: [0, -41] // point from which the popup should open relative to the iconAnchor 
   });
+  myCustomColour = '#583470'
+
+  listAddressHealthProfessional: any[][];
 
   constructor(private http: HttpClient) {
   }
 
   // Fonction d'initialisation du composant.
   ngOnInit() {
+
+    this.listAddressHealthProfessional = [[46.01, 4.9], [46.23, 4.7], [46.05, 4.82], [45.36, 4.4], [45.2, 4.6], [45.788, 4.3],
+    [45.63, 4.65], [45.613, 4.8325], [45.7425, 4.8244], [45.745145, 4.9645]];
     // Déclaration de la carte avec les coordonnées du centre et le niveau de zoom.
     this.myfrugalmap = L.map('frugalmap').setView([46.7311634, 3.0599573], 6);
 
@@ -65,9 +71,21 @@ export class MapComponent implements OnInit {
       // Do something after
       this.myPrint2();
       this.myMarkers();
-      this.mapCalcDistance(56, 6, 57, 5);
+      // tslint:disable-next-line:max-line-length
+      this.showHP();
       L.circle([this.latSearch, this.lonSearch], { radius: 20000 }).addTo(this.myfrugalmap);
+      /*  console.log(this.listAddressHealthProfessional[0][1]); */
     })();
+  }
+
+  showHP() {
+    for (let i = 0; i < this.listAddressHealthProfessional.length; i++) {
+      if (this.mapCalcDistance(this.listAddressHealthProfessional[i][0], this.listAddressHealthProfessional[i][1],
+        this.latSearch, this.lonSearch) < 25) {
+        this.markersCreator(this.listAddressHealthProfessional[i][0], this.listAddressHealthProfessional[i][1]);
+        console.log(i);
+      }
+    }
   }
 
   myPrint2() {
@@ -82,11 +100,16 @@ export class MapComponent implements OnInit {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
+  markersCreator(lat1: number, lon1: number) {
+    L.marker([lat1, lon1], { icon: this.myIcon }).addTo(this.myfrugalmap).openPopup();
+  }
+
   myMarkers() {
-    L.marker([50.1311634, 3.8599573], { icon: this.myIcon }).addTo(this.myfrugalmap).openPopup();
-
-    L.marker([50.5611634, 3.569785], { icon: this.myIcon }).addTo(this.myfrugalmap).openPopup();
-
+    this.markersCreator(50.1311634, 3.8599573);
+    this.markersCreator(50.5611634, 3.569785);
+    for (let i = 0; i < 5; i++) {
+      this.markersCreator(50.1311634 + (i / 10), 3.8599573);
+    }
   }
 
   mapCalcDistance(lat1: number, lon1: number, lat2: number, lon2: number) {
@@ -106,7 +129,7 @@ export class MapComponent implements OnInit {
   }
 
   deg2rad(deg) {
-    return deg * (Math.PI / 180)
+    return deg * (Math.PI / 180);
   }
 
 }
