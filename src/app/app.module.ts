@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,8 +19,17 @@ import { CreateCityHallComponent } from './user/city-hall/create-city-hall/creat
 import { ListCityHallComponent } from './user/city-hall/list-city-hall/list-city-hall.component';
 import { UpdateCityHallComponent } from './user/city-hall/update-city-hall/update-city-hall.component';
 import { ListHealthProfessionalComponent } from './user/health-professional/list-health-professional/list-health-professional.component';
+// tslint:disable-next-line:max-line-length
 import { UpdateHealthProfessionalComponent } from './user/health-professional/update-health-professional/update-health-professional.component';
+// tslint:disable-next-line:max-line-length
 import { CreateHealthProfessionalComponent } from './user/health-professional/create-health-professional/create-health-professional.component';
+import 'hammerjs';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -46,7 +55,13 @@ import { CreateHealthProfessionalComponent } from './user/health-professional/cr
   imports: [
     BrowserModule,
     NgbModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

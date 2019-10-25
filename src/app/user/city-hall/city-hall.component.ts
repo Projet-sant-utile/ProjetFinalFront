@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
 
+import { Component, OnInit } from '@angular/core';
+import * as $ from 'jquery';
 @Component({
   selector: 'app-city-hall',
   templateUrl: './city-hall.component.html',

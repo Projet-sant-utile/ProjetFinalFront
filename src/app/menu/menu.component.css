@@ -17,7 +17,8 @@
     border-radius: 100px !important;
 }
 .bot-right {
-position:absolute;
+z-index:1000;
+position: fixed;
 bottom:10px;
 right:10px;
 }

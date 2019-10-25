@@ -5,5 +5,8 @@
   /* Page content */
   .main {
     margin-left: 210px; /* Same as the width of the sidenav */
+    width: auto;
     margin-top: 116px;
   }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
