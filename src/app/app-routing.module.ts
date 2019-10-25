@@ -1,3 +1,4 @@
+import { MapComponent } from './map/map.component';
 import { UpdateCityHallComponent } from './user/city-hall/update-city-hall/update-city-hall.component';
 import { CreateCityHallComponent } from './user/city-hall/create-city-hall/create-city-hall.component';
 import { CityHallComponent } from './user/city-hall/city-hall.component';
@@ -5,7 +6,9 @@ import { ListPatientComponent } from './user/patient/list-patient/list-patient.c
 import { CreatePatientComponent } from './user/patient/create-patient/create-patient.component';
 import { UpdatePatientComponent } from './user/patient/update-patient/update-patient.component';
 import { ListCityHallComponent } from './user/city-hall/list-city-hall/list-city-hall.component';
+// tslint:disable-next-line:max-line-length
 import { UpdateHealthProfessionalComponent } from './user/health-professional/update-health-professional/update-health-professional.component';
+// tslint:disable-next-line:max-line-length
 import { CreateHealthProfessionalComponent } from './user/health-professional/create-health-professional/create-health-professional.component';
 import { ListHealthProfessionalComponent } from './user/health-professional/list-health-professional/list-health-professional.component';
 import { HealthProfessionalComponent } from './user/health-professional/health-professional.component';
@@ -20,43 +23,9 @@ const routes: Routes = [
   {
     path: 'user', component: UserComponent
   },
-  // {
-  //   path: 'medecin', component: HealthProfessionalComponent
-  // },
-  // {
-  //   path: 'medecin/list', component: HealthProfessionalComponent
-  // },
-  // {
-  //   path: 'medecin/ajout', component: HealthProfessionalComponent
-  // },
-  // {
-  //   path: 'medecin/update', component: HealthProfessionalComponent
-  // },
-  // {
-  //   path: 'patient', component: HealthProfessionalComponent
-  // },
-  // {
-  //   path: 'patient/list', component: HealthProfessionalComponent
-  // },
-  // {
-  //   path: 'patient/ajout', component: HealthProfessionalComponent
-  // },
-  // {
-  //   path: 'patient/update', component: HealthProfessionalComponent
-  // },
-  // {
-  //   path: 'mairie', component: HealthProfessionalComponent
-  // },
-  // {
-  //   path: 'mairie/list', component: HealthProfessionalComponent
-  // },
-  // {
-  //   path: 'mairie/ajout', component: HealthProfessionalComponent
-  // },
-  // {
-  //   path: 'mairie/update', component: HealthProfessionalComponent
-  // },
-
+  {
+    path: 'map', component: MapComponent
+  },
   {
     path: 'medecin', component: HealthProfessionalComponent, children: [
       { path: 'list', component: ListHealthProfessionalComponent },

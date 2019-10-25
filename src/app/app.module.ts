@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
@@ -23,6 +23,8 @@ import { ListHealthProfessionalComponent } from './user/health-professional/list
 import { UpdateHealthProfessionalComponent } from './user/health-professional/update-health-professional/update-health-professional.component';
 // tslint:disable-next-line:max-line-length
 import { CreateHealthProfessionalComponent } from './user/health-professional/create-health-professional/create-health-professional.component';
+import { MapComponent } from './map/map.component';
+import { FormsModule } from '@angular/forms';
 import 'hammerjs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -50,12 +52,15 @@ import {MatIconModule} from '@angular/material/icon';
     UpdateHealthProfessionalComponent,
     CreateHealthProfessionalComponent,
     CreateCityHallComponent,
-    CreatePatientComponent
+    CreatePatientComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     AppRoutingModule,
+    FormsModule,
+    HttpClientModule
     MatDatepickerModule,
     MatNativeDateModule,
     BrowserAnimationsModule,
