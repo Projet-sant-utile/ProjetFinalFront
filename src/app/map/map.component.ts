@@ -18,10 +18,18 @@ export class MapComponent implements OnInit {
   urlAddress: any;
   myIcon = L.icon({
     iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/marker-icon.png',
+    /* iconUrl: 'marker-icon.png', */
     iconSize: [25, 41], // size of the icon
     iconAnchor: [12, 41], // point of the icon which will correspond to marker's location
     popupAnchor: [0, -41] // point from which the popup should open relative to the iconAnchor 
   });
+
+  /* myIcon2 = L.icon({
+    iconUrl: 'marker-icon.png',
+    iconSize: [25, 41], // size of the icon
+    iconAnchor: [12, 41], // point of the icon which will correspond to marker's location
+    popupAnchor: [0, -41] // point from which the popup should open relative to the iconAnchor 
+  }); */
   myCustomColour = '#583470'
 
   listAddressHealthProfessional: any[][];
@@ -47,9 +55,9 @@ export class MapComponent implements OnInit {
   myPrint() {
     console.log('message');
     console.log(this.searchAddress);
-    const myIcon = L.icon({
-      iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/marker-icon.png'
-    });
+    /* const myIcon = L.icon({
+      /* iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/marker-icon.png'
+    }); */
     this.urlAddress = 'https://eu1.locationiq.com/v1/search.php?key=d716e4b235c638&q=' + this.searchAddress + '&format=json';
 
     // tslint:disable-next-line:max-line-length
@@ -70,7 +78,7 @@ export class MapComponent implements OnInit {
 
       // Do something after
       this.myPrint2();
-      this.myMarkers();
+      /*  this.myMarkers(); */
       // tslint:disable-next-line:max-line-length
       this.showHP();
       L.circle([this.latSearch, this.lonSearch], { radius: 20000 }).addTo(this.myfrugalmap);
@@ -104,13 +112,13 @@ export class MapComponent implements OnInit {
     L.marker([lat1, lon1], { icon: this.myIcon }).addTo(this.myfrugalmap).openPopup();
   }
 
-  myMarkers() {
+  /* myMarkers() {
     this.markersCreator(50.1311634, 3.8599573);
     this.markersCreator(50.5611634, 3.569785);
     for (let i = 0; i < 5; i++) {
       this.markersCreator(50.1311634 + (i / 10), 3.8599573);
     }
-  }
+  }  */
 
   mapCalcDistance(lat1: number, lon1: number, lat2: number, lon2: number) {
     const R = 6371; // Radius of the earth in km

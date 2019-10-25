@@ -24,7 +24,6 @@ import { UpdateHealthProfessionalComponent } from './user/health-professional/up
 // tslint:disable-next-line:max-line-length
 import { CreateHealthProfessionalComponent } from './user/health-professional/create-health-professional/create-health-professional.component';
 import { MapComponent } from './map/map.component';
-import { FormsModule } from '@angular/forms';
 import 'hammerjs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -60,7 +59,7 @@ import {MatIconModule} from '@angular/material/icon';
     NgbModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
     MatDatepickerModule,
     MatNativeDateModule,
     BrowserAnimationsModule,
