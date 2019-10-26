@@ -26,17 +26,19 @@
   <!-- <tr *ngFor="let item of hp |filter:term; let i=index"> -->
   <tr *ngFor="let item of hp |search:'speciality':term; let i=index">
   <!-- <tr *ngFor="let item of hp; let i=index"> -->
-<td>{{item.idUser}}</td>
-<td>{{item.name}}</td>
-<td>{{item.firstname}}</td>
-<td>{{item.birthday}}</td>
-<td>{{item.speciality}}</td>
-<!-- <td>{{item.availability}}</td> -->
-<td>{{item.address.city}}</td>
-<td>{{item.office.idLocation}}</td>
-<td><button class="btn btn-warning" (click)="edit(item.idUser)">Edit</button></td>
-<td><button class="btn btn-danger" (click)="delete(item.idUser,i)">Delete</button></td>
-  </tr>
+  <ng-container *ngIf="item.idUser!=0">
+            <td>{{item.idUser}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.firstname}}</td>
+            <td>{{item.birthday}}</td>
+            <td>{{item.speciality}}</td>
+            <!-- <td>{{item.availability}}</td> -->
+            <td>{{item.address.city}}</td>
+            <td>{{item.office.idLocation}}</td>
+            <td><button class="btn btn-warning" (click)="edit(item.idUser)">Edit</button></td>
+            <td><button class="btn btn-danger" (click)="delete(item.idUser,i)">Delete</button></td>
+  </ng-container>
+</tr>
 </table>
 </div>
 </div>
