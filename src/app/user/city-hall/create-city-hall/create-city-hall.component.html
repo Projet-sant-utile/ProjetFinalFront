@@ -1,1 +1,64 @@
 <p>create-city-hall works!</p>
+
+<br>
+<div class="row">
+    <div class="container">
+
+        <div class="card">
+            <div class="card-header">Formulaire : Mairie</div>
+            <div class="card-body">
+                <form [formGroup]="form">
+                    <label>Id :</label>
+                    <input type="text" class="form-control" formControlName="id" />
+                    <p *ngIf="form.get('id').invalid && form.get('id').touched" class="text-danger">Ce champ est
+                        obligatoire.</p>
+
+                    <label>Adresse de la mairie :</label>
+                    <input type="text" class="form-control" formControlName="address" />
+                    <p *ngIf="form.get('address').invalid && form.get('address').touched" class="text-danger">Ce champ
+                        est
+                        obligatoire.</p>
+
+                    <label>Numéro de téléphone :</label>
+                    <input type="text" class="form-control" formControlName="phoneNumber" />
+                    <p *ngIf="form.get('phoneNumber').invalid && form.get('phoneNumber').touched" class="text-danger">Ce
+                        champ est
+                        obligatoire.</p>
+
+                    <label>Email :</label>
+                    <input type="text" class="form-control" formControlName="email" />
+                    <div *ngIf="form.get('email').invalid && form.get('email').touched">
+                        <p *ngIf="form.get('email').errors.required" class="text-danger">Ce champ est obligatoire.</p>
+                    </div>
+
+                    <label>Mot de passe :</label>
+                    <input type="number" class="form-control" formControlName="password" />
+                    <div *ngIf="form.get('password').invalid && form.get('password').touched">
+                        <p *ngIf="form.get('password').errors.required" class="text-danger">Ce champ est obligatoire.
+                        </p>
+                        <p *ngIf="form.get('password').errors.minlength" class="text-danger">Ce champ doit contenir au
+                            moins 6 caractères. </p> longueur égale à 3</p>
+                    </div>
+
+                    <label>Local :</label>
+                    <input type="text" class="form-control" formControlName="local" />
+                    <div *ngIf="form.get('local').invalid && form.get('local').touched">
+                        <p *ngIf="form.get('local').errors.required" class="text-danger">Ce champ est obligatoire</p>
+                    </div>
+                    <br>
+
+                    <button type="submit" [disabled]="!form.valid" class="btn btn-success"
+                        (click)="add()">Ajouter</button>
+                    <button type="submit" [disabled]="!form.valid" class="btn btn-success"
+                        (click)="update()">Update</button>
+
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

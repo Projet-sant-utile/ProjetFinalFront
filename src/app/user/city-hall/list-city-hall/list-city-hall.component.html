@@ -1,3 +1,42 @@
-<div class="main container">
+<!-- <div class="main container">
     <p>list-city-hall works!</p>
+</div> -->
+
+<br>
+<div class="row">
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header"> Liste des mairies
+                <input type="text" class="form-control" [(ngModel)]="term">
+
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Adresse</th>
+                        <th>Numéro de téléphone</th>
+                        <th>Email</th>
+                        <th>Mot de passe</th>
+                        <th>Local</th>
+
+                    </thead>
+                    <!-- <tr *ngFor="let item of joueurs |filter:term ;let i=index"> -->
+                    <tr *ngFor="let item of ch; let i=index">
+                        <td>{{item.idUser}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.address}}</td>
+                        <td>{{item.phoneNumber}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.password}}</td>
+                        <td>{{item.local.idLocation}}</td>
+                        <td><button class="btn btn-warning" (click)="edit(item.idUser)">Modifier</button></td>
+                        <td><button class="btn btn-danger" (click)="delete(item.idUser,i)">Supprimer</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
