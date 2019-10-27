@@ -30,7 +30,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {MatIconModule} from '@angular/material/icon';
+import { SearchPipe } from './searchPipe';
 import { ProfilPatientComponent } from './user/patient/profil-patient/profil-patient.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { LogoutComponent } from './authentication/logout/logout.component';
@@ -55,13 +57,15 @@ import { LogoutComponent } from './authentication/logout/logout.component';
     CreateHealthProfessionalComponent,
     CreateCityHallComponent,
     CreatePatientComponent,
-    MapComponent,
+    SearchPipe,
     ProfilPatientComponent,
     LoginComponent,
     LogoutComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
+    Ng2SearchPipeModule,
     NgbModule,
     AppRoutingModule,
     FormsModule,
