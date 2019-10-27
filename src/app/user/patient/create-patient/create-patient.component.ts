@@ -21,11 +21,13 @@ export class CreatePatientComponent implements OnInit {
       firstname: new FormControl(null),
       email: new FormControl(null),
       birthday: new FormControl(null),
-      country: new FormControl(null),
-      city: new FormControl(null),
-      zipCode: new FormControl(null),
-      streetName: new FormControl(null),
-      streetNumber: new FormControl(null),
+      address: new FormGroup({
+        country: new FormControl(null),
+        city: new FormControl(null),
+        zipCode: new FormControl(null),
+        streetName: new FormControl(null),
+        streetNumber: new FormControl(null),
+      }),
       password: new FormControl(null, []),
       confirmation: new FormControl(null, []),
 

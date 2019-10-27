@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 })
 export class hpService {
 
-    URL = 'http://localhost:8082/apiHealthProfessional/';
+    URL = 'http://localhost:8082/apiHealthProfessional';
     hp: any[] = [];
     editMode = false;
 
