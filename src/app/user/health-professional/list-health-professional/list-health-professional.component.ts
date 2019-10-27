@@ -1,6 +1,6 @@
+import { HpService } from './../../../../service/hp.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { hpService } from 'src/service/hp.service';
 
 @Component({
   selector: 'app-list-health-professional',
@@ -11,7 +11,7 @@ export class ListHealthProfessionalComponent implements OnInit {
 
   hp: any[] = [];
 
-  constructor(private hpService: hpService, private router: Router) { }
+  constructor(private hpService: HpService, private router: Router) { }
 
   ngOnInit() {
     this.findAll();
