@@ -1,4 +1,4 @@
-import { HpService } from './../../../../service/hp.service';
+import { hpService } from './../../../../service/hp.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -11,8 +11,7 @@ export class ListHealthProfessionalComponent implements OnInit {
 
   hp: any[] = [];
 
-  constructor(private hpService: HpService, private router: Router) { }
-
+  constructor(private hpService: hpService, private router: Router) { }
   ngOnInit() {
     this.findAll();
   }
@@ -33,7 +32,7 @@ export class ListHealthProfessionalComponent implements OnInit {
   edit(id) {
     this.router.navigate(['/medecin/update']);
     this.hpService.editMode = true;
-    console.log("h");
+    console.log('h');
   }
 
 }
