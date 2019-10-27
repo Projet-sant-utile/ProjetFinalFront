@@ -14,6 +14,7 @@ export class PatientComponent implements OnInit {
   navigate() {
 
     this.router.navigate(['/patient/ajout']);
+    this.router.navigate(['/patient/profil']);
 
 
 

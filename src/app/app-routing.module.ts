@@ -1,3 +1,6 @@
+import { LogoutComponent } from './authentication/logout/logout.component';
+import { LoginComponent } from './authentication/login/login.component';
+import { ProfilPatientComponent } from './user/patient/profil-patient/profil-patient.component';
 import { MapComponent } from './map/map.component';
 import { UpdateCityHallComponent } from './user/city-hall/update-city-hall/update-city-hall.component';
 import { CreateCityHallComponent } from './user/city-hall/create-city-hall/create-city-hall.component';
@@ -18,11 +21,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 
+
 const routes: Routes = [
 
   {
     path: 'user', component: UserComponent
   },
+  { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent },
   {
     path: 'map', component: MapComponent
   },
@@ -37,7 +43,8 @@ const routes: Routes = [
     path: 'patient', component: PatientComponent, children: [
       { path: 'list', component: ListPatientComponent },
       { path: 'ajout', component: CreatePatientComponent },
-      { path: 'update', component: UpdatePatientComponent }
+      { path: 'update', component: UpdatePatientComponent },
+      { path: 'profil', component: ProfilPatientComponent }
     ]
   },
   {

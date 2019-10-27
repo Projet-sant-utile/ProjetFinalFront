@@ -31,6 +31,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatIconModule} from '@angular/material/icon';
+import { ProfilPatientComponent } from './user/patient/profil-patient/profil-patient.component';
+import { LoginComponent } from './authentication/login/login.component';
+import { LogoutComponent } from './authentication/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,10 @@ import {MatIconModule} from '@angular/material/icon';
     CreateHealthProfessionalComponent,
     CreateCityHallComponent,
     CreatePatientComponent,
-    MapComponent
+    MapComponent,
+    ProfilPatientComponent,
+    LoginComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
