@@ -6,9 +6,10 @@
   .main {
     margin-left: 210px; /* Same as the width of the sidenav */
     width: auto;
+    height: auto;
     margin-top: 116px;
   }
-html, body { height: 100%; }
+body { height: auto; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }

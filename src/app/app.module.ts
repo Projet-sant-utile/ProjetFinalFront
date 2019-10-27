@@ -33,6 +33,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {MatIconModule} from '@angular/material/icon';
 import { SearchPipe } from './searchPipe';
+import { ProfilPatientComponent } from './user/patient/profil-patient/profil-patient.component';
+import { LoginComponent } from './authentication/login/login.component';
+import { LogoutComponent } from './authentication/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +58,9 @@ import { SearchPipe } from './searchPipe';
     CreateCityHallComponent,
     CreatePatientComponent,
     SearchPipe,
+    ProfilPatientComponent,
+    LoginComponent,
+    LogoutComponent,
     MapComponent
   ],
   imports: [
