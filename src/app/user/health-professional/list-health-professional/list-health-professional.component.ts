@@ -19,10 +19,7 @@ export class ListHealthProfessionalComponent implements OnInit {
 
   findAll() {
     this.hpService.findAll().subscribe((value: any[]) => {
-      //methode barbare pour eviter que le 0 qui bug s'affiche dans le findAll
-      // if (value[0].idUser != 0) {
         this.hp = value;
-      // }
     });
   }
 
