@@ -17,19 +17,19 @@ export class MapComponent implements OnInit {
   myfrugalmap: any;
   urlAddress: any;
   myIcon = L.icon({
+    iconUrl: 'https://www.ija-lille.fr/wpress/wp-content/uploads/2018/01/map-marker-icon.png',
+    iconSize: [41, 41], // size of the icon
+    iconAnchor: [20, 41], // point of the icon which will correspond to marker's location
+    popupAnchor: [0, -41] // point from which the popup should open relative to the iconAnchor 
+  });
+
+  myIcon2 = L.icon({
     iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/marker-icon.png',
-    /* iconUrl: 'marker-icon.png', */
     iconSize: [25, 41], // size of the icon
     iconAnchor: [12, 41], // point of the icon which will correspond to marker's location
     popupAnchor: [0, -41] // point from which the popup should open relative to the iconAnchor 
   });
 
-  /* myIcon2 = L.icon({
-    iconUrl: 'marker-icon.png',
-    iconSize: [25, 41], // size of the icon
-    iconAnchor: [12, 41], // point of the icon which will correspond to marker's location
-    popupAnchor: [0, -41] // point from which the popup should open relative to the iconAnchor 
-  }); */
   myCustomColour = '#583470'
 
   listAddressHealthProfessional: any[][];
@@ -97,7 +97,7 @@ export class MapComponent implements OnInit {
   }
 
   myPrint2() {
-    L.marker([this.latSearch, this.lonSearch], { icon: this.myIcon })
+    L.marker([this.latSearch, this.lonSearch], { icon: this.myIcon2 })
       .bindPopup('Vous êtes ici').addTo(this.myfrugalmap).openPopup();
 
 

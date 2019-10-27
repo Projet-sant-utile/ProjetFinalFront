@@ -30,7 +30,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {MatIconModule} from '@angular/material/icon';
+import { SearchPipe } from './searchPipe';
 
 @NgModule({
   declarations: [
@@ -52,10 +54,12 @@ import {MatIconModule} from '@angular/material/icon';
     CreateHealthProfessionalComponent,
     CreateCityHallComponent,
     CreatePatientComponent,
+    SearchPipe,
     MapComponent
   ],
   imports: [
     BrowserModule,
+    Ng2SearchPipeModule,
     NgbModule,
     AppRoutingModule,
     FormsModule,
