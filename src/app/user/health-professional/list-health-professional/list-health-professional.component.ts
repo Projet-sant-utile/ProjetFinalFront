@@ -32,7 +32,6 @@ export class ListHealthProfessionalComponent implements OnInit {
   edit(id) {
     this.router.navigate(['/medecin/update/', id]);
     this.hpService.editMode = true;
-    console.log('h');
   }
 
 }
