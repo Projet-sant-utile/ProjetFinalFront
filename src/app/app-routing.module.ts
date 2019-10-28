@@ -1,3 +1,4 @@
+import { AuthGaurdService } from './../service/auth.service';
 import { LogoutComponent } from './authentication/logout/logout.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { ProfilPatientComponent } from './user/patient/profil-patient/profil-patient.component';

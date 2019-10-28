@@ -14,7 +14,7 @@ export class CityHallService {
     constructor(private http: HttpClient) { }
 
 
-    add(ch: any) {
+    add(ch: any) { 
         return this.http.post(this.URL + '/add', ch, { observe: 'response' });
     }
 

@@ -1,3 +1,4 @@
+import { HpService } from './../../service/hp.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as L from 'leaflet';
@@ -16,32 +17,36 @@ export class MapComponent implements OnInit {
   lonSearch: number;
   myfrugalmap: any;
   urlAddress: any;
+
   myIcon = L.icon({
     iconUrl: 'https://www.ija-lille.fr/wpress/wp-content/uploads/2018/01/map-marker-icon.png',
     iconSize: [41, 41], // size of the icon
     iconAnchor: [20, 41], // point of the icon which will correspond to marker's location
     popupAnchor: [0, -41] // point from which the popup should open relative to the iconAnchor 
   });
-
   myIcon2 = L.icon({
     iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/marker-icon.png',
     iconSize: [25, 41], // size of the icon
     iconAnchor: [12, 41], // point of the icon which will correspond to marker's location
     popupAnchor: [0, -41] // point from which the popup should open relative to the iconAnchor 
   });
+  myCustomColour = '#583470';
 
-  myCustomColour = '#583470'
+  listAddressHp: any[][];
+  hp: any[] = [];
 
-  listAddressHealthProfessional: any[][];
-
-  constructor(private http: HttpClient) {
+  constructor(private hpService: HpService, private http: HttpClient) {
   }
 
   // Fonction d'initialisation du composant.
   ngOnInit() {
 
-    this.listAddressHealthProfessional = [[46.01, 4.9], [46.23, 4.7], [46.05, 4.82], [45.36, 4.4], [45.2, 4.6], [45.788, 4.3],
+    this.listAddressHp = [[46.01, 4.9], [46.23, 4.7], [46.05, 4.82], [45.36, 4.4], [45.2, 4.6], [45.788, 4.3],
     [45.63, 4.65], [45.613, 4.8325], [45.7425, 4.8244], [45.745145, 4.9645]];
+
+    this.findAll();
+
+
     // Déclaration de la carte avec les coordonnées du centre et le niveau de zoom.
     this.myfrugalmap = L.map('frugalmap').setView([46.7311634, 3.0599573], 6);
 
@@ -63,7 +68,6 @@ export class MapComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     this.http.get(this.urlAddress)
       .subscribe((data: any) => {
-        console.log('Hello');
         console.log(data);
         console.log(data[0].lat);
         this.latSearch = data[0].lat;
@@ -74,23 +78,26 @@ export class MapComponent implements OnInit {
     (async () => {
       // Do something before delay
 
-      await this.delay(200);
+      await this.delay(500);
 
       // Do something after
-      this.myPrint2();
       /*  this.myMarkers(); */
       // tslint:disable-next-line:max-line-length
       this.showHP();
+      this.myPrint2();
       L.circle([this.latSearch, this.lonSearch], { radius: 20000 }).addTo(this.myfrugalmap);
-      /*  console.log(this.listAddressHealthProfessional[0][1]); */
+      /*  console.log(this.listAddressHp[0][1]); */
+
+      console.log('ici' + this.hp.values + 'et la');
+
     })();
   }
 
   showHP() {
-    for (let i = 0; i < this.listAddressHealthProfessional.length; i++) {
-      if (this.mapCalcDistance(this.listAddressHealthProfessional[i][0], this.listAddressHealthProfessional[i][1],
-        this.latSearch, this.lonSearch) < 25) {
-        this.markersCreator(this.listAddressHealthProfessional[i][0], this.listAddressHealthProfessional[i][1]);
+    for (let i = 0; i < this.listAddressHp.length; i++) {
+      if (this.mapCalcDistance(this.listAddressHp[i][0], this.listAddressHp[i][1],
+        this.latSearch, this.lonSearch) < 2000) {
+        this.markersCreator(this.listAddressHp[i][0], this.listAddressHp[i][1]);
         console.log(i);
       }
     }
@@ -138,6 +145,18 @@ export class MapComponent implements OnInit {
 
   deg2rad(deg) {
     return deg * (Math.PI / 180);
+  }
+
+  findAll() {
+    this.hpService.findAll().subscribe((value: any[]) => {
+      value.forEach(hpp => {
+        // console.log('value' + hpp.address.lat);
+        this.listAddressHp.push([hpp.address.lat, hpp.address.lon]);
+        // this.hp = value;
+        // console.log('value hp adresse' + this.listAddressHp);
+        // console.log('value' + this.hp);
+      });
+    });
   }
 
 }

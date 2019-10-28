@@ -14,10 +14,12 @@ export class ListHealthProfessionalComponent implements OnInit {
   constructor(private hpService: HpService, private router: Router) { }
   ngOnInit() {
     this.findAll();
+    console.log('a' + this.hp);
   }
 
   findAll() {
     this.hpService.findAll().subscribe((value: any[]) => {
+        console.log(value);
         this.hp = value;
     });
   }
