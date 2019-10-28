@@ -1,4 +1,4 @@
-import { hpService } from './../../service/hp.service';
+import { HpService } from './../../service/hp.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as L from 'leaflet';
@@ -35,7 +35,7 @@ export class MapComponent implements OnInit {
   listAddressHp: any[][];
   hp: any[] = [];
 
-  constructor(private hpsService: hpService, private http: HttpClient) {
+  constructor(private hpService: HpService, private http: HttpClient) {
   }
 
   // Fonction d'initialisation du composant.
@@ -148,7 +148,7 @@ export class MapComponent implements OnInit {
   }
 
   findAll() {
-    this.hpsService.findAll().subscribe((value: any[]) => {
+    this.hpService.findAll().subscribe((value: any[]) => {
       value.forEach(hpp => {
         // console.log('value' + hpp.address.lat);
         this.listAddressHp.push([hpp.address.lat, hpp.address.lon]);
