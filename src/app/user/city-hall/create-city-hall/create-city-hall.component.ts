@@ -18,19 +18,17 @@ export class CreateCityHallComponent implements OnInit {
 
   ngOnInit() {
     this.chForm = new FormGroup({
-      local: new FormGroup({
-        idLocation: new FormControl(null),
-        address: new FormGroup({
-          country: new FormControl(null),
-          city: new FormControl(null),
-          zipCode: new FormControl(null),
-          streetName: new FormControl(null),
-          streetNumber: new FormControl(null),
-          lat: new FormControl(null),
-          lon: new FormControl(null),
-        }),
 
+      address: new FormGroup({
+        country: new FormControl(null),
+        city: new FormControl(null),
+        zipCode: new FormControl(null),
+        streetName: new FormControl(null),
+        streetNumber: new FormControl(null),
+        lat: new FormControl(null),
+        lon: new FormControl(null),
       }),
+
       availability: new FormGroup({
         afternoonEnd: new FormControl(null),
         morningStart: new FormControl(null),
@@ -43,21 +41,6 @@ export class CreateCityHallComponent implements OnInit {
       password: new FormControl(null, []),
     }
     );
-
-  /*   this.activatedRoute.params.subscribe((param: Params) => {
-
-      this.id = param[this.id];
-      if (this.id) {
-        this.cityHallService.getOne(this.id).subscribe((response: any) => {
-
-          this.chForm.setValue(response);
-
-        });
-
-
-      }
-
-    }); */
   }
 
   add() {
