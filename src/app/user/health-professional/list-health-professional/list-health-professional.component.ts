@@ -11,27 +11,29 @@ export class ListHealthProfessionalComponent implements OnInit {
 
   hp: any[] = [];
 
-  constructor(private hpService: hpService, private router: Router) { }
+  constructor(private hppService: hpService, private router: Router) { }
   ngOnInit() {
     this.findAll();
+    console.log('a' + this.hp);
   }
 
   findAll() {
-    this.hpService.findAll().subscribe((value: any[]) => {
+    this.hppService.findAll().subscribe((value: any[]) => {
+        console.log(value);
         this.hp = value;
     });
   }
 
   delete(id, index) {
-    this.hpService.delete(id).subscribe(response => {
-      this.hpService.hp.splice(index, 1);
+    this.hppService.delete(id).subscribe(response => {
+      this.hppService.hp.splice(index, 1);
     });
 
   }
 
   edit(id) {
     this.router.navigate(['/medecin/update/', id]);
-    this.hpService.editMode = true;
+    this.hppService.editMode = true;
   }
 
 }

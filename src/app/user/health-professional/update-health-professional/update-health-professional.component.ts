@@ -48,10 +48,10 @@ export class UpdateHealthProfessionalComponent implements OnInit {
         lon: new FormControl(null),
       }),
       password: new FormControl(null, []),
-      idUser:new FormControl(null),
-      phoneNumber:new FormControl(null),
-      speciality:new FormControl(null),
-      office:new FormControl(null),
+      idUser: new FormControl(null),
+      phoneNumber: new FormControl(null),
+      speciality: new FormControl(null),
+      office: new FormControl(null),
       // dpControl: new FormControl()
     }
     );
@@ -72,9 +72,9 @@ export class UpdateHealthProfessionalComponent implements OnInit {
 
 
   update() {
-    console.log('mot de passe entré dans le formulaire : ' + this.hpForm.get('password').value);
-    this.hpForm.get('password').setValue(Md5.hashAsciiStr(this.hpForm.get('password').value));
-    console.log('mot de passe chiffré et envoyé à la BDD : ' + this.hpForm.get('password').value);
+    // console.log('mot de passe entré dans le formulaire : ' + this.hpForm.get('password').value);
+    // this.hpForm.get('password').setValue(Md5.hashAsciiStr(this.hpForm.get('password').value));
+    // console.log('mot de passe chiffré et envoyé à la BDD : ' + this.hpForm.get('password').value);
     this.hpService.update(this.hpForm.value).subscribe(response => {
     });
   }
