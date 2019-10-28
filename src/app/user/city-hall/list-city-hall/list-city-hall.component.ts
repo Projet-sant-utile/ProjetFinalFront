@@ -1,4 +1,4 @@
-import { CityHallService } from './../service/ch.service';
+import { CityHallService } from './../../../../service/ch.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 /* import { chService } from 'src/user/city-hall/service/ch.service'; */

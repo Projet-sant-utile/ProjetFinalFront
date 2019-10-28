@@ -1,55 +1,109 @@
 <p>create-city-hall works!</p>
 
 <br>
-<div class="container">
+<div class="row">
+    <!--  <div class="container">
+
+        <div class="card">
+            <div class="card-header">Formulaire : Mairie</div>
+            <div class="card-body">
+                <form [formGroup]="chform"> -->
+
     <div class="row">
-
         <div class="col-md-8 offset-md-1">
+            <h2 class="text-center"> Créer un compte </h2><br />
+            <form class="form" [formGroup]="chForm">
+                <!-- <label>Id :</label>
+                <input type="text" class="form-control" formControlName="id" /> -->
+                <!-- <p *ngIf="form.get('id').invalid && form.get('id').touched" class="text-danger">Ce champ est
+                        obligatoire.</p> -->
 
-            <h2 class="text-center">Formulaire : Mairie</h2><br />
-            <form [formGroup]="form" class="form">
-                
-                <div class="field form-group">
-                    <label>Adresse de la mairie :</label>
-                    <input type="text" class="form-control" formControlName="address" />
-                    <!-- <p *ngIf="form.get('address').invalid && form.get('address').touched" class="text-danger">Ce champ
+                <!-- <label>Adresse de la mairie :</label>
+                <input type="text" class="form-control" formControlName="address" />
+                <p *ngIf="form.get('address').invalid && form.get('address').touched" class="text-danger">Ce champ
                         est
                         obligatoire.</p> -->
+
+                <div formGroupName="address">
+                    <div class="form-row">
+                        <div class="form-group col-md-3 ">
+                            <label>Pays</label>
+                            <input type="text" class="form-control" formControlName="country">
+                        </div>
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Ville</label>
+                            <input type="text" class="form-control" formControlName="city">
+                        </div>
+                        <div class="form-group col-md-3 offset-md-1">
+                            <label>Code postal</label>
+                            <input type="number" class="form-control" formControlName="zipCode">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-5">
+                            <label>Rue</label>
+                            <input type="text" class="form-control" formControlName="streetName">
+                        </div>
+
+                        <div class="form-group col-md-2 offset-md-1">
+                            <label>N° de Rue</label>
+                            <input type="number" class="form-control" formControlName="streetNumber">
+                        </div>
+                    </div>
                 </div>
-                <div class="field form-group">
-                    <label>Numéro de téléphone :</label>
-                    <input type="text" class="form-control" formControlName="phoneNumber" />
-                    <!-- <p *ngIf="form.get('phoneNumber').invalid && form.get('phoneNumber').touched" class="text-danger">Ce
+
+            <label>Numéro de téléphone :</label>
+            <input type="number" class="form-control" formControlName="phoneNumber" />
+            <!-- <p *ngIf="form.get('phoneNumber').invalid && form.get('phoneNumber').touched" class="text-danger">Ce
                         champ est
                         obligatoire.</p> -->
-                </div>
-                <div class="field form-group">
-                    <label>Email :</label>
-                    <input type="text" class="form-control" formControlName="email" />
-                    <!-- <div *ngIf="form.get('email').invalid && form.get('email').touched">
+
+            <label>Email :</label>
+            <input type="text" class="form-control" formControlName="email" />
+            <!-- <div *ngIf="form.get('email').invalid && form.get('email').touched">
                         <p *ngIf="form.get('email').errors.required" class="text-danger">Ce champ est obligatoire.</p>
                     </div> -->
-                </div>
-                <div class="field form-group">
-                    <label>Mot de passe :</label>
-                    <input type="password" class="form-control" formControlName="password" />
-                    <!-- <div *ngIf="form.get('password').invalid && form.get('password').touched">
+
+            <label>Mot de passe :</label>
+            <input type="password" class="form-control" formControlName="password" />
+            <!-- <div *ngIf="form.get('password').invalid && form.get('password').touched">
                         <p *ngIf="form.get('password').errors.required" class="text-danger">Ce champ est obligatoire.
                         </p>
                         <p *ngIf="form.get('password').errors.minlength" class="text-danger">Ce champ doit contenir au
                             moins 6 caractères </p>
                     </div> -->
-                </div>
-                <div class="field form-group">
-                    <label>Local :</label>
-                    <input type="text" class="form-control" formControlName="local" />
-                    <!-- <div *ngIf="form.get('local').invalid && form.get('local').touched">
+
+            <label>Local :</label>
+            <input type="text" class="form-control" formControlName="local" />
+            <!-- <div *ngIf="form.get('local').invalid && form.get('local').touched">
                         <p *ngIf="form.get('local').errors.required" class="text-danger">Ce champ est obligatoire</p>
                     </div> -->
-                    <br>
-                </div>
+            <br>
 
-                <button type="submit"  class="btn btn-success" (click)="add()">Ajouter</button>
+            <div formGroupName="availability">
+                <div class="form-row">
+                    <div class="form-group col-md-3 ">
+                        <label>Debut de matinée</label>
+                        <input type="text" class="form-control" formControlName="morningStart">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Fin de matinée</label>
+                        <input type="text" class="form-control" formControlName="morningEnd">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Début d'après-midi</label>
+                        <input type="text" class="form-control" formControlName="afternoonStart">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Fin d'après-midi</label>
+                        <input type="text" class="form-control" formControlName="afternoonEnd">
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success" (click)="add()">Ajouter</button>
+            <!-- <button type="submit" [disabled]="!form.valid" class="btn btn-success" (click)="update()">Update</button> -->
 
 
             </form>
