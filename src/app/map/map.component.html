@@ -10,16 +10,27 @@
     <form class="form-inline my-2 my-lg-0 d-flex justify-content-center">
         <input class="form-control mr-sm-2" type="search" (keyup.enter)="myPrint()" [(ngModel)]="searchAddress" name="something" aria-label="Search">
         <!-- <button class="btn btn-light my-2 my-sm-0" type="submit" (click)="myPrint()">Entrer</button> -->
-        <button class="btn btn-light my-2 my-sm-0" type="button" (click)="myPrint()">Entrer</button>
-        <select name="dist" id="distance">
-                <option value="">--Choisir la distance--</option>
-                <option value="5">5</option>
-                <option value="10">10</option>
+        <!-- <button class="btn btn-light my-2 my-sm-0" type="button" (click)="myRemoveMarkers()">Create</button> -->
+        <!-- <button class="btn btn-light my-2 my-sm-0" type="button" (click)="myRemoveSpeciality()">Create</button> -->
+        <select class="btn btn-dark my-2 my-sm-0" (change)="selectChangeHandler($event)" (change)="myPrint()">
+            <option value="1">--Choisir la distance--</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
                 <option value="20">20</option>
                 <option value="1000">1000</option>
             </select>
-    <br>
+            <select class="btn btn-dark my-2 my-sm-0" (change)="selectChangeSpeciality($event)" (change)="myPrint()" (change)="myRemoveMarkers()"   (change)="myRemoveSpeciality()" >
+            <option value="all">--Choisir la spécialité--</option>
+            <option value="generaliste">generaliste</option>
+            <option value="dentiste">dentiste</option>
+            <option value="ophtalmologue">ophtalmologue</option>
+            <option value="pediatre">pediatre</option>
+        </select>
+        <button class="btn btn-light my-2 my-sm-0" type="button" (click)="myPrint()" (click)="myRemoveMarkers()"   (click)="myRemoveSpeciality()"     >Entrer</button>
+        <br>
     </form>
     <div id="frugalmap">
     </div>
+
+
 </div>

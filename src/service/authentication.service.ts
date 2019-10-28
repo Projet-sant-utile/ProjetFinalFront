@@ -18,7 +18,7 @@ export class AuthenticationService {
 
   isUserLoggedIn() {
     const email = sessionStorage.getItem('email');
-    console.log('isUserLoggedIn' + !(email === null));
+    // console.log('isUserLoggedIn' + !(email === null));
     return !(email === null);
   }
 

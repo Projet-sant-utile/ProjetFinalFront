@@ -12,6 +12,10 @@ import * as L from 'leaflet';
 // Implémenter OnInit
 export class MapComponent implements OnInit {
 
+  mark: any;
+  markers: any[] = [];
+  selectedDistance: '1';
+  selectedSpeciality = 'all';
   searchAddress: string;
   latSearch: number;
   lonSearch: number;
@@ -44,6 +48,8 @@ export class MapComponent implements OnInit {
     this.listAddressHp = [[46.01, 4.9], [46.23, 4.7], [46.05, 4.82], [45.36, 4.4], [45.2, 4.6], [45.788, 4.3],
     [45.63, 4.65], [45.613, 4.8325], [45.7425, 4.8244], [45.745145, 4.9645]];
 
+    this.listAddressHp = [[46.01, 4.9]];
+
     this.findAll();
 
 
@@ -58,8 +64,8 @@ export class MapComponent implements OnInit {
   }
 
   myPrint() {
-    console.log('message');
-    console.log(this.searchAddress);
+    // console.log('message');
+    // console.log(this.searchAddress);
     /* const myIcon = L.icon({
       /* iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/marker-icon.png'
     }); */
@@ -68,10 +74,10 @@ export class MapComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     this.http.get(this.urlAddress)
       .subscribe((data: any) => {
-        console.log(data);
-        console.log(data[0].lat);
+        // console.log(data);
+        // console.log(data[0].lat);
         this.latSearch = data[0].lat;
-        console.log(data[0].lon);
+        // console.log(data[0].lon);
         this.lonSearch = data[0].lon;
       });
 
@@ -83,12 +89,13 @@ export class MapComponent implements OnInit {
       // Do something after
       /*  this.myMarkers(); */
       // tslint:disable-next-line:max-line-length
-      this.showHP();
       this.myPrint2();
-      L.circle([this.latSearch, this.lonSearch], { radius: 20000 }).addTo(this.myfrugalmap);
+      this.showHP();
+      this.mark = 
+      L.circle([this.latSearch, this.lonSearch], { radius: 1000* parseInt(this.selectedDistance) }).addTo(this.myfrugalmap);
       /*  console.log(this.listAddressHp[0][1]); */
-
-      console.log('ici' + this.hp.values + 'et la');
+      this.markers.push(this.mark);
+      // console.log('ici' + this.hp.values + 'et la');
 
     })();
   }
@@ -96,18 +103,19 @@ export class MapComponent implements OnInit {
   showHP() {
     for (let i = 0; i < this.listAddressHp.length; i++) {
       if (this.mapCalcDistance(this.listAddressHp[i][0], this.listAddressHp[i][1],
-        this.latSearch, this.lonSearch) < 2000) {
+        this.latSearch, this.lonSearch) < parseInt(this.selectedDistance)) {
         this.markersCreator(this.listAddressHp[i][0], this.listAddressHp[i][1]);
-        console.log(i);
+        // console.log(i);
       }
     }
+    
   }
 
   myPrint2() {
-    L.marker([this.latSearch, this.lonSearch], { icon: this.myIcon2 })
+    this.findAll();
+    this.mark = L.marker([this.latSearch, this.lonSearch], { icon: this.myIcon2 })
       .bindPopup('Vous êtes ici').addTo(this.myfrugalmap).openPopup();
-
-
+      this.markers.push(this.mark);
     /* this.myfrugalmap = L.map('frugalmap').setView([this.latSearch, this.lonSearch], 10); */
   }
 
@@ -116,7 +124,9 @@ export class MapComponent implements OnInit {
   }
 
   markersCreator(lat1: number, lon1: number) {
+    this.mark = 
     L.marker([lat1, lon1], { icon: this.myIcon }).addTo(this.myfrugalmap).openPopup();
+    this.markers.push(this.mark);
   }
 
   /* myMarkers() {
@@ -138,7 +148,7 @@ export class MapComponent implements OnInit {
       ;
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const d = R * c; // Distance in km
-    console.log(d);
+    // console.log(d);
     return d;
 
   }
@@ -148,15 +158,50 @@ export class MapComponent implements OnInit {
   }
 
   findAll() {
+    this.myRemoveMarkers();
     this.hpService.findAll().subscribe((value: any[]) => {
       value.forEach(hpp => {
+        
         // console.log('value' + hpp.address.lat);
-        this.listAddressHp.push([hpp.address.lat, hpp.address.lon]);
+        if (this.selectedSpeciality == 'all') {
+          // console.log('alllllllllllllllll' + hpp.address.lat);
+          this.listAddressHp.push([hpp.address.lat, hpp.address.lon]);
+        } 
+        else if (this.selectedSpeciality == hpp.speciality) {
+          this.listAddressHp.push([hpp.address.lat, hpp.address.lon]);
+        }
+
+
         // this.hp = value;
         // console.log('value hp adresse' + this.listAddressHp);
         // console.log('value' + this.hp);
       });
+      // console.log(this.listAddressHp);
+      this.showHP();
     });
+  }
+
+  selectChangeHandler (event: any) {
+    this.selectedDistance = event.target.value;
+  }
+
+  selectChangeSpeciality (event: any) {
+    // console.log(event.target.value);
+    this.selectedSpeciality = event.target.value;
+  }
+
+  
+
+  myRemoveMarkers() {
+    // console.log('removed');
+    for(let i = 0; i < this.markers.length; i++){
+      this.myfrugalmap.removeLayer(this.markers[i]);
+      
+   }
+  }
+  myRemoveSpeciality() {
+    // console.log('removed speciality');
+    this.listAddressHp = [];
   }
 
 }
