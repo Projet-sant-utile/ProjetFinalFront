@@ -16,8 +16,8 @@ export class CreateHealthProfessionalComponent implements OnInit {
   model: any;
   hpForm: FormGroup;
   hpfakeForm: FormGroup;
-  lat= (Math.random() * 9) + 43;;
-  lon= (Math.random() * 13) - 4;
+  lat = (Math.random() * 9) + 43;;
+  lon = (Math.random() * 13) - 4;
 
   constructor(private hpService: hpService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
@@ -48,7 +48,7 @@ export class CreateHealthProfessionalComponent implements OnInit {
       // dpControl: new FormControl()
     });
 
-   this.hpfakeForm = new FormGroup({
+    this.hpfakeForm = new FormGroup({
       availability: new FormGroup({
         afternoonEnd: new FormControl(20),
         morningStart: new FormControl(8),
@@ -69,7 +69,7 @@ export class CreateHealthProfessionalComponent implements OnInit {
         lon: new FormControl(this.lon)
       }),
     });
-    
+
   }
   add() {
     console.log('mot de passe entré dans le formulaire : ' + this.hpForm.get('password').value);
