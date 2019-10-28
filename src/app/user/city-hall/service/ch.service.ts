@@ -5,25 +5,25 @@ import { map } from 'rxjs/operators';
 @Injectable({
     providedIn: 'root'
 })
-export class hpService {
+export class CityHallService {
 
-    URL = 'http://localhost:8082/apiHealthProfessional';
-    hp: any[] = [];
+    URL = 'http://localhost:8082/apiCityHall';
+    ch: any[] = [];
     editMode = false;
 
     constructor(private http: HttpClient) { }
 
 
-    add(hp: any) {
-        return this.http.post(this.URL + '/add', hp, { observe: 'response' });
+    add(ch: any) {
+        return this.http.post(this.URL + '/add', ch, { observe: 'response' });
     }
 
-    update(hp: any) {
-        return this.http.put(this.URL + '/update', hp, { observe: 'response' });
+    update(ch: any) {
+        return this.http.put(this.URL + '/update', ch, { observe: 'response' });
     }
 
     findAll() {
-        return this.http.get<any[]>(this.URL + '/HealthProfessionals').pipe(map(value => this.hp = value));
+        return this.http.get<any[]>(this.URL + '/CityHalls').pipe(map(value => this.ch = value));
     }
 
     delete(id: any) {
