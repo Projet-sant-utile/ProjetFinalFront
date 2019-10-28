@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl } from '@angular/forms';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-import { hpService } from 'src/service/hp.service';
+import { HpService } from 'src/service/hp.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Md5 } from 'ts-md5/dist/md5';
 
@@ -16,10 +16,10 @@ export class CreateHealthProfessionalComponent implements OnInit {
   model: any;
   hpForm: FormGroup;
   hpfakeForm: FormGroup;
-  lat = (Math.random() * 9) + 43;;
+  lat = (Math.random() * 9) + 43;
   lon = (Math.random() * 13) - 4;
 
-  constructor(private hpService: hpService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private hpService: HpService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.hpForm = new FormGroup({
@@ -55,16 +55,16 @@ export class CreateHealthProfessionalComponent implements OnInit {
         morningEnd: new FormControl(12),
         afternoonStart: new FormControl(14),
       }),
-      name: new FormControl("jean"),
-      firstname: new FormControl("claude"),
-      email: new FormControl("jeanclaude"),
-      birthday: new FormControl("2012-11-11"),
+      name: new FormControl('jean'),
+      firstname: new FormControl('claude'),
+      email: new FormControl('jeanclaude'),
+      birthday: new FormControl('2012-11-11'),
       address: new FormGroup({
-        country: new FormControl("france"),
-        city: new FormControl("lyon"),
-        zipCode: new FormControl("69005"),
-        streetName: new FormControl("hea"),
-        streetNumber: new FormControl("05"),
+        country: new FormControl('france'),
+        city: new FormControl('lyon'),
+        zipCode: new FormControl('69005'),
+        streetName: new FormControl('hea'),
+        streetNumber: new FormControl('05'),
         lat: new FormControl(this.lat),
         lon: new FormControl(this.lon)
       }),

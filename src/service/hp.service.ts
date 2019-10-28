@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 @Injectable({
     providedIn: 'root'
 })
-export class hpService {
+export class HpService {
 
     URL = 'http://localhost:8082/apiHealthProfessional';
     hp: any[] = [];

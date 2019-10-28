@@ -1,4 +1,5 @@
-import { CityHallService } from './../service/ch.service';
+import { Md5 } from 'ts-md5/dist/md5';
+import { CityHallService } from './../../../../service/ch.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -10,57 +11,71 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 
 export class CreateCityHallComponent implements OnInit {
-  form: FormGroup;
+  chForm: FormGroup;
   id: any;
   ch: any;
   constructor(private cityHallService: CityHallService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.form = new FormGroup({
+    this.chForm = new FormGroup({
 
-      id: new FormControl(),
-      address: new FormControl(null, Validators.required),
-      phoneNumber: new FormControl(null, Validators.required),
-      email: new FormControl(null, Validators.required),
-      password: new FormControl(null, [Validators.minLength(6), Validators.required]),
-      local: new FormControl(null)
-    });
+      phoneNumber: new FormControl(null),
+      email: new FormControl(null),
+      password: new FormControl(null, []),
+      local: new FormGroup({
+        idLocation: new FormControl(null),
+        address: new FormGroup({
+          country: new FormControl(null),
+          city: new FormControl(null),
+          zipCode: new FormControl(null),
+          streetName: new FormControl(null),
+          streetNumber: new FormControl(null),
+          lat: new FormControl(null),
+          lon: new FormControl(null),
+        }),
+        availability: new FormGroup({
+          afternoonEnd: new FormControl(null),
+          morningStart: new FormControl(null),
+          morningEnd: new FormControl(null),
+          afternoonStart: new FormControl(null),
+        })
+      }),
+    }
+    );
 
     this.activatedRoute.params.subscribe((param: Params) => {
 
-        this.id = param[this.id];
-        if (this.id) {
-          this.cityHallService.getOne(this.id).subscribe((response: any) => {
+      this.id = param[this.id];
+      if (this.id) {
+        this.cityHallService.getOne(this.id).subscribe((response: any) => {
 
-            this.form.setValue(response);
+          this.chForm.setValue(response);
 
-          });
+        });
 
 
-        }
+      }
 
-      });
-    }
+    });
+  }
 
   add() {
 
-      this.cityHallService.add(this.form.value).subscribe(response => {
+    console.log('mot de passe entré dans le formulaire : ' + this.chForm.get('password').value);
+    this.chForm.get('password').setValue(Md5.hashAsciiStr(this.chForm.get('password').value));
+    console.log('mot de passe chiffré et envoyé à la BDD : ' + this.chForm.get('password').value);
+    this.cityHallService.add(this.chForm.value).subscribe(response => {
+    });
 
-        this.cityHallService.ch.push(response.body);
-        this.form.reset();
+  }
 
-
-      });
-
-    }
-
-  findIndexToUpdate(item) {
+  /* findIndexToUpdate(item) {
       return item.id === this;
     }
 
 
   update() {
-      this.cityHallService.update(this.form.value)
+      this.cityHallService.update(this.chForm.value)
         .subscribe((response: any) => {
 
           this.ch = this.cityHallService.ch.find(this.findIndexToUpdate, response.body.id);
@@ -69,7 +84,7 @@ export class CreateCityHallComponent implements OnInit {
 
           this.cityHallService.ch.splice(index, 1, response.body);
         });
-    }
+    } */
 }
 
 
