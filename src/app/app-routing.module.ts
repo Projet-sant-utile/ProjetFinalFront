@@ -44,13 +44,8 @@ const routes: Routes = [
     path: 'patient', component: PatientComponent, children: [
       { path: 'list', component: ListPatientComponent },
       { path: 'ajout', component: CreatePatientComponent },
-<<<<<<< HEAD
-      { path: 'update', component: UpdatePatientComponent },
-      { path: 'profil', component: ProfilPatientComponent ,canActivate: [AuthGaurdService]}
-=======
       { path: 'update/:id', component: UpdatePatientComponent },
       { path: 'profil', component: ProfilPatientComponent }
->>>>>>> dev
     ]
   },
   {
