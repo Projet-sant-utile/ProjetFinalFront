@@ -46,10 +46,6 @@ export class MapComponent implements OnInit {
 
     this.findAll();
 
-    // console.log('aae' + this.hp);
-
-    this.listAddressHp.push([45.74, 4.84]);
-
 
     // Déclaration de la carte avec les coordonnées du centre et le niveau de zoom.
     this.myfrugalmap = L.map('frugalmap').setView([46.7311634, 3.0599573], 6);
@@ -72,7 +68,6 @@ export class MapComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     this.http.get(this.urlAddress)
       .subscribe((data: any) => {
-        console.log('Hello');
         console.log(data);
         console.log(data[0].lat);
         this.latSearch = data[0].lat;
