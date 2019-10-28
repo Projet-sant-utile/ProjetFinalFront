@@ -36,14 +36,14 @@ const routes: Routes = [
     path: 'medecin', component: HealthProfessionalComponent, children: [
       { path: 'list', component: ListHealthProfessionalComponent },
       { path: 'ajout', component: CreateHealthProfessionalComponent },
-      { path: 'update', component: UpdateHealthProfessionalComponent }
+      { path: 'update/:id', component: UpdateHealthProfessionalComponent }
     ]
   },
   {
     path: 'patient', component: PatientComponent, children: [
       { path: 'list', component: ListPatientComponent },
       { path: 'ajout', component: CreatePatientComponent },
-      { path: 'update', component: UpdatePatientComponent },
+      { path: 'update/:id', component: UpdatePatientComponent },
       { path: 'profil', component: ProfilPatientComponent }
     ]
   },
@@ -51,7 +51,7 @@ const routes: Routes = [
     path: 'mairie', component: CityHallComponent, children: [
       { path: 'list', component: ListCityHallComponent },
       { path: 'ajout', component: CreateCityHallComponent },
-      { path: 'update', component: UpdateCityHallComponent }
+      { path: 'update/:id', component: UpdateCityHallComponent }
     ]
   }
 

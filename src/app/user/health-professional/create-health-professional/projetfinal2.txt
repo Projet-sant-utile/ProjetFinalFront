@@ -1,0 +1,25 @@
+Dans le back je vais essayer de voir pour l'implementation de faker. Pour voir si ca peut crée plein de fausse données. X
+Create et update pour hp
+relier les medecin et la carte
+creations des différents icon
+faire en sorte que la carte soit plus grand en millisecond pour éviter les bug
+faire en sorte que la carte recharge
+faire en srote que lorsque l'on appuis sur entrer ca affiche la carte
+
+
+Faker et Swagger
+
+create medecin avec postman
+et create patient avec postman pour le lat et le lon
+
+
+faire le faker en front
+faire les médecins (localisation des medecins) dans la map
+faire une localisation par km de distance
+
+ajout form pour medecin x
+faker front
+routing update x
+faire le update x
+recevoir les données des medecins
+ajout du liste pour les autres
