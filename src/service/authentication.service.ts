@@ -1,37 +1,24 @@
 import { PatientService } from './patient.service';
 import { Injectable } from '@angular/core';
 import { Md5 } from 'ts-md5';
+import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  userPassword: any;
-  email: any;
 
   constructor(private patientService: PatientService) { }
 
-  authenticate(id: any, password: any) {
-    this.patientService.getOne(id).subscribe((data: any) => {
-      this.userPassword = data.password;
-      console.log('-------------------------------------------------------------');
-      console.log(this.userPassword);
-      console.log('-------------------------------------------------------------');
-      this.email = data.email;
-      console.log(this.email);
-      console.log('-------------------------------------------------------------');
-    });
-    if ( password === this.userPassword) {
-      sessionStorage.setItem('email', this.email);
-      return true;
-    } else {
-      return false;
-    }
+  authenticate(email: any, password: any): Observable<any> {
+
+    return this.patientService.getByEmail(email);
   }
 
   isUserLoggedIn() {
     const email = sessionStorage.getItem('email');
-    console.log(!(email === null));
+    console.log('isUserLoggedIn' + !(email === null));
     return !(email === null);
   }
 

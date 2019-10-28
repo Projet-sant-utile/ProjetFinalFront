@@ -40,10 +40,8 @@ export class PatientService {
     return this.http.get<any>(this.URL + '/get/' + id);
 
   }
-  getEmailById(id: any) {
-    this.getOne(id).subscribe((data: any) => {
-       return data.email;
-      }
-      );
+  getByEmail(email: any) {
+    const response =  this.http.get<any>(this.URL + '/findByEmail/' + email);
+    return response;
   }
 }

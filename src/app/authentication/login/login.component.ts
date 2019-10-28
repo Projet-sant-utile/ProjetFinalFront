@@ -10,10 +10,7 @@ import { Md5 } from 'ts-md5';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  id = '42';
-  user: any;
   email: any;
-  username = 'javainuse';
   password = '';
   invalidLogin = false;
 
@@ -22,23 +19,23 @@ export class LoginComponent implements OnInit {
               private patientService: PatientService) { }
 
   ngOnInit() {
-    this.getOne(1);
   }
-  getOne(id: any) {
-    this.patientService.getOne(id).subscribe((data: any) => {
-      console.log(data);
-      console.log(data.email);
-      this.email = data.email;
-    });
-  }
+
   checkLogin() {
-    if (this.loginservice.authenticate(this.id, Md5.hashAsciiStr(this.password))
-    ) {
-      this.router.navigate(['']);
-      this.invalidLogin = false;
-    } else {
-      this.invalidLogin = true;
-    }
+    this.loginservice.authenticate(this.email, Md5.hashAsciiStr(this.password)).subscribe(
+      (resp) => {
+        if (resp.password === Md5.hashAsciiStr(this.password)
+        ) {
+          sessionStorage.setItem('email', this.email);
+
+          this.router.navigate(['']);
+          this.invalidLogin = false;
+        } else {
+          this.invalidLogin = true;
+        }
+      }
+    );
+
   }
 
 }

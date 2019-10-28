@@ -1,3 +1,4 @@
+import { AuthGaurdService } from './../service/auth.service';
 import { LogoutComponent } from './authentication/logout/logout.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { ProfilPatientComponent } from './user/patient/profil-patient/profil-patient.component';
@@ -44,7 +45,7 @@ const routes: Routes = [
       { path: 'list', component: ListPatientComponent },
       { path: 'ajout', component: CreatePatientComponent },
       { path: 'update', component: UpdatePatientComponent },
-      { path: 'profil', component: ProfilPatientComponent }
+      { path: 'profil', component: ProfilPatientComponent ,canActivate: [AuthGaurdService]}
     ]
   },
   {
