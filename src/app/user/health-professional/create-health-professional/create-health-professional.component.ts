@@ -16,8 +16,8 @@ export class CreateHealthProfessionalComponent implements OnInit {
   model: any;
   hpForm: FormGroup;
   hpfakeForm: FormGroup;
-  lat = (Math.random() * 9) + 43;;
-  lon = (Math.random() * 13) - 4;
+  lat = (Math.random() * 5) + 44;
+  lon = (Math.random() * 7) - 1;
 
   constructor(private hpService: hpService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
@@ -82,8 +82,8 @@ export class CreateHealthProfessionalComponent implements OnInit {
 
 
   fakeAdd() {
-    this.lat = (Math.random() * 9) + 43;
-    this.lon = (Math.random() * 13) - 4;
+    this.lat = (Math.random() * 5) + 44;
+    this.lon = (Math.random() * 7) - 1;
     this.hpService.add(this.hpfakeForm.value).subscribe(response => {
     });
 
