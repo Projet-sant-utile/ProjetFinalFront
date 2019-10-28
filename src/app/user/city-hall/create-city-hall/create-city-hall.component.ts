@@ -18,10 +18,6 @@ export class CreateCityHallComponent implements OnInit {
 
   ngOnInit() {
     this.chForm = new FormGroup({
-
-      phoneNumber: new FormControl(null),
-      email: new FormControl(null),
-      password: new FormControl(null, []),
       local: new FormGroup({
         idLocation: new FormControl(null),
         address: new FormGroup({
@@ -33,17 +29,22 @@ export class CreateCityHallComponent implements OnInit {
           lat: new FormControl(null),
           lon: new FormControl(null),
         }),
-        availability: new FormGroup({
-          afternoonEnd: new FormControl(null),
-          morningStart: new FormControl(null),
-          morningEnd: new FormControl(null),
-          afternoonStart: new FormControl(null),
-        })
+
       }),
+      availability: new FormGroup({
+        afternoonEnd: new FormControl(null),
+        morningStart: new FormControl(null),
+        morningEnd: new FormControl(null),
+        afternoonStart: new FormControl(null),
+      }),
+
+      phoneNumber: new FormControl(null),
+      email: new FormControl(null),
+      password: new FormControl(null, []),
     }
     );
 
-    this.activatedRoute.params.subscribe((param: Params) => {
+  /*   this.activatedRoute.params.subscribe((param: Params) => {
 
       this.id = param[this.id];
       if (this.id) {
@@ -56,7 +57,7 @@ export class CreateCityHallComponent implements OnInit {
 
       }
 
-    });
+    }); */
   }
 
   add() {
@@ -65,26 +66,13 @@ export class CreateCityHallComponent implements OnInit {
     this.chForm.get('password').setValue(Md5.hashAsciiStr(this.chForm.get('password').value));
     console.log('mot de passe chiffré et envoyé à la BDD : ' + this.chForm.get('password').value);
     this.cityHallService.add(this.chForm.value).subscribe(response => {
+      this.cityHallService.ch.push(response.body);
+      this.chForm.reset();
     });
 
   }
 
-  /* findIndexToUpdate(item) {
-      return item.id === this;
-    }
 
-
-  update() {
-      this.cityHallService.update(this.chForm.value)
-        .subscribe((response: any) => {
-
-          this.ch = this.cityHallService.ch.find(this.findIndexToUpdate, response.body.id);
-
-          const index = this.cityHallService.ch.indexOf(this.ch);
-
-          this.cityHallService.ch.splice(index, 1, response.body);
-        });
-    } */
 }
 
 

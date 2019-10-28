@@ -9,7 +9,7 @@ export class CityHallService {
 
     URL = 'http://localhost:8082/apiCityHall';
     ch: any[] = [];
-    editMode = false;
+    /* editMode = false; */
 
     constructor(private http: HttpClient) { }
 

@@ -31,7 +31,7 @@ export class ListCityHallComponent implements OnInit {
 
   edit(id) {
     this.router.navigate(['/mairie/edit']);
-    this.cityHallService.editMode = true;
+    /* this.cityHallService.editMode = true; */
    /*  console.log('lala'); */
 
   }
