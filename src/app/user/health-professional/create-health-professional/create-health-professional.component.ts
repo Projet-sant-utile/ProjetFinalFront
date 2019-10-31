@@ -18,6 +18,7 @@ export class CreateHealthProfessionalComponent implements OnInit {
   hpfakeForm: FormGroup;
   lat = (Math.random() * 5) + 44;
   lon = (Math.random() * 7) - 1;
+  speciality = ['generaliste', 'dentiste', 'ophtalmologue', 'pediatre'];
 
   constructor(private hpService: HpService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
@@ -58,6 +59,7 @@ export class CreateHealthProfessionalComponent implements OnInit {
       name: new FormControl('jean'),
       firstname: new FormControl('claude'),
       email: new FormControl('jeanclaude'),
+      speciality: new FormControl('generaliste'),
       birthday: new FormControl('2012-11-11'),
       address: new FormGroup({
         country: new FormControl('france'),
@@ -82,11 +84,15 @@ export class CreateHealthProfessionalComponent implements OnInit {
 
 
   fakeAdd() {
-    this.lat = (Math.random() * 5) + 44;
-    this.lon = (Math.random() * 7) - 1;
+
+    for (let i = 0; i < 100; i++) {
+
+    this.hpfakeForm.patchValue({'speciality': this.speciality[(Math.floor(Math.random() * this.speciality.length))]});
+    this.hpfakeForm.patchValue({'address': {lat: (Math.random() * 1) + 45.25, lon: (Math.random() * 1) + 4.35}});
+    console.log(this.hpfakeForm.value);
     this.hpService.add(this.hpfakeForm.value).subscribe(response => {
     });
-
+  }
   }
 
 }

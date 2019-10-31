@@ -14,7 +14,7 @@ export class MapComponent implements OnInit {
 
   mark: any;
   markers: any[] = [];
-  selectedDistance: '1';
+  selectedDistance = '1';
   selectedSpeciality = 'all';
   searchAddress: string;
   latSearch: number;
@@ -56,9 +56,15 @@ export class MapComponent implements OnInit {
     // Déclaration de la carte avec les coordonnées du centre et le niveau de zoom.
     this.myfrugalmap = L.map('frugalmap').setView([46.7311634, 3.0599573], 6);
 
+    // base map
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: 'Frugal Map'
     }).addTo(this.myfrugalmap);
+
+    // custom map, taken from https://leaflet-extras.github.io/leaflet-providers/preview/
+    // L.tileLayer('https://{s}.tile.thunderforest.com/transport-dark/{z}/{x}/{y}.png?apikey=280077be27474d9db57d6b72eaa6e5cb', {
+    //   attribution: 'Frugal Map'
+    // }).addTo(this.myfrugalmap);
 
 
   }
@@ -115,7 +121,8 @@ export class MapComponent implements OnInit {
     this.findAll();
     this.mark = L.marker([this.latSearch, this.lonSearch], { icon: this.myIcon2 })
       .bindPopup('Vous êtes ici').addTo(this.myfrugalmap).openPopup();
-      this.markers.push(this.mark);
+    this.markers.push(this.mark);
+    this.zoomOnLocation(this.latSearch, this.lonSearch);
     /* this.myfrugalmap = L.map('frugalmap').setView([this.latSearch, this.lonSearch], 10); */
   }
 
@@ -202,6 +209,21 @@ export class MapComponent implements OnInit {
   myRemoveSpeciality() {
     // console.log('removed speciality');
     this.listAddressHp = [];
+  }
+
+  zoomOnLocation(lat, lon) {
+    let z = 11;
+    if (this.selectedDistance == '1') {
+      z = 14;
+    } else if (this.selectedDistance == '5') {
+      z = 12;
+    } else if (this.selectedDistance == '10') {
+      z = 11;
+    } else if (this.selectedDistance == '20') {
+      z = 10;
+      // console.log('z is : ' + z);
+    } 
+    this.myfrugalmap.flyTo([lat, lon], z, {duration: 3.5});
   }
 
 }
